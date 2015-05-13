@@ -2,8 +2,6 @@
 #include <math.h>
 
 char board[3][3]; 
-int recRow;
-int recCol;
 int moveX = 0;
 
 initialize() {
@@ -1013,8 +1011,6 @@ int main() {
 		}
 		movePlayerX(row, col);
 		moveX++;
-		recRow = row;
-		recCol = col;
 		movePlayerO();
 		printboard();
 	}
