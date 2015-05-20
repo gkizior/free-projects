@@ -2,11 +2,10 @@
 #include <math.h>
 
 char board[3][3]; 
-int recRow;
-int recCol;
 int moveX = 0;
 
-initialize() {
+//initializes the tic-tac-toe board
+void initialize() {
 	int i;
 	int j;
 	for(i = 0; i < 3; i++) {
@@ -15,11 +14,12 @@ initialize() {
 		}
 	}
 }	
-
+//plays player X's turn
 void movePlayerX(int row, int col) {
 	board[row][col] = 'x';
 }
 
+//prints game over when computer wins
 void printGAMEOVER() {
 	printf("\n\n");
 	printf("GGGGGGGGG        A        M       M  EEEEEEEE     OOOOOOOO  V           V   EEEEEEEE  RRRRRRRR  !!!\n");
@@ -31,6 +31,8 @@ void printGAMEOVER() {
 	printf("GGGGGGGGG  A           A  M       M  EEEEEEEE     OOOOOOOO        V         EEEEEEEE  R     RR  !!!\n");
 	printf("\n");
 }
+
+//prints tie game when game finishes tied
 void printTIEGAME() {
 	printf("\n\n");
 	printf("TTTTTTTTT  IIIIIIIII  EEEEEEEEE     GGGGGGGGG        A        M       M  EEEEEEEE\n");
@@ -42,6 +44,9 @@ void printTIEGAME() {
 	printf("    T      IIIIIIIII  EEEEEEEEE     GGGGGGGGG  A           A  M       M  EEEEEEEE\n");
 	printf("\n");
 }
+
+//returns 1 when game is over
+//returns 0 when game is not over
 int win() {
 	if(board[0][0] == 'o' && board[0][1] == 'o' && board[0][2] == 'o') {
 		printGAMEOVER();
@@ -94,6 +99,7 @@ int win() {
 	return 0;	
 }	
 
+//makes move for computer player O
 void movePlayerO() {
 	if(board[0][0] == 'o' && board[0][1] == 'o' && board[0][2] == ' '){
 		board[0][2] = 'o';	
@@ -346,7 +352,7 @@ void movePlayerO() {
 	}
 }
 
-
+//prints the tic-tac-toe board
 void printboard() {
 	if(board[0][0] == ' ' && board[0][1] == ' ' && board[0][2] == ' ') {
 		printf("         |         |         \n");
@@ -1013,8 +1019,6 @@ int main() {
 		}
 		movePlayerX(row, col);
 		moveX++;
-		recRow = row;
-		recCol = col;
 		movePlayerO();
 		printboard();
 	}
